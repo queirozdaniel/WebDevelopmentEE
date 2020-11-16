@@ -21,8 +21,9 @@
     </h:form>
 
     <h:form>
-        Nome: <h:inputText value="#{pageBean.name}" />
-        <h:commandButton value="Processar" action="#{pageBean.processar}"/>
+        <h:button value="Processar" outcome="result">
+            <f:param name="name" value="Daniel" />
+        </h:button>
     </h:form>
 </body>
 </html>

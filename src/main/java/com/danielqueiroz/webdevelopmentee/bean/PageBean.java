@@ -25,8 +25,7 @@ public class PageBean {
 
     public String processar(){
         //Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-        flash.put("nomeDoUsuario",name);
-
+        //flash.put("nomeDoUsuario",name);
         return "result?faces-redirect=true";
     }
 
