@@ -7,24 +7,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
 
-<head>
+<h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Java Enterprise Edition</title>
-</head>
-<body>
-    <h1><h:outputText value="Ola Mundo com JSF"/></h1>
-    <h2> <h:outputText value="#{indexBean.message}"/></h2>
+</h:head>
+<h:body>
+    <h:outputStylesheet library="css" name="style.css" />
 
-    <h:form>
-        <h:commandButton value="Ir para outra página" action="page_two"/>
-        <h:commandButton value="Ir para página de navegação" action="page_bean"/>
-        <h:commandButton value="Ir para página de cadastro" action="cadastro"/>
-    </h:form>
+    <div class="container">
+        <h1><h:outputText value="Ola Mundo com JSF"/></h1>
+        <h2> <h:outputText value="#{indexBean.message}"/></h2>
 
-    <h:form>
-        <h:button value="Processar" outcome="result">
-            <f:param name="name" value="Daniel" />
-        </h:button>
-    </h:form>
-</body>
+        <h:form>
+            <h:commandButton value="Ir para outra página" action="page_two"/>
+            <h:commandButton value="Ir para página de navegação" action="page_bean"/>
+            <h:commandButton value="Ir para página de cadastro" action="cadastro"/>
+        </h:form>
+
+        <h:form>
+            <h:button value="Processar" outcome="result">
+                <f:param name="name" value="Daniel" />
+            </h:button>
+        </h:form>
+    </div>
+</h:body>
 </html>

@@ -5,14 +5,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xml:lang="en" lang="en">
 
-<head>
+<h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Cadastro de Usuários</title>
-</head>
-<body>
-    <h1>Página de cadastro</h1>
+</h:head>
+<h:body class="container">
+    <h1 class="font-nova">Página de cadastro</h1>
 
     <h:form id="form-cadastro">
         <h:panelGrid columns="2">
@@ -21,10 +22,10 @@
             </f:facet>
 
             Nome:
-            <h:inputText value="#{cadastro.nome}" />
+            <h:inputText value="#{cadastro.nome}" pt:placeholder="Coloque seu nome completo" />
 
             Email:
-            <h:inputText value="#{cadastro.email}" />
+            <h:inputText value="#{cadastro.email}" pt:placeholder="Coloque seu e-mail" pt:type="email"/>
 
             Senha:
             <h:inputSecret id="password1" value="#{cadastro.senha1}" />
@@ -42,7 +43,7 @@
             <h:selectBooleanCheckbox value="#{cadastro.receberEmails}" />
 
             Obsercações:
-            <h:inputTextarea value="#{cadastro.observacoes}" rows="4" cols="32" />
+            <h:inputTextarea value="#{cadastro.observacoes}" rows="4" cols="32" pt:placeholder="Algo que ache importante nos dizer ?"  />
 
             Linguagens de Programação:
             <h:selectManyCheckbox value="#{cadastro.linguagens}">
@@ -52,6 +53,9 @@
             <h:commandButton value="Cadastrar" action="info" onclick="return verificarSenhas()" />
         </h:panelGrid>
     </h:form>
+
+
+    <h:outputStylesheet library="css" name="style.css"/>
 
     <script type="application/javascript">
         function verificarSenhas() {
@@ -66,7 +70,6 @@
             return false;
         }
     </script>
-
-</body>
+</h:body>
 
 </html>

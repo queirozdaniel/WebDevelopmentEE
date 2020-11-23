@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 960px;
+    margin: 10px auto;
+}
+
+.font-nova{
+    font-family: Arial;
+    font-size: 1rem;
+    background-color: crimson;
+}
