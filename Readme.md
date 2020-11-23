@@ -4,8 +4,10 @@
 
 ---
 - Branch main: Estudos, comits pequenos de exemplos
-- Branch projeto: Projeto implementando
+- Branch projeto: Projeto sendo implementado
 ---
+
+
 
 
 Vamos codar ?  🎉🙌

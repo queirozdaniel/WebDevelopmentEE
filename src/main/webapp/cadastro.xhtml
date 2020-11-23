@@ -14,7 +14,7 @@
 <body>
     <h1>Página de cadastro</h1>
 
-    <h:form>
+    <h:form id="form-cadastro">
         <h:panelGrid columns="2">
             <f:facet name="header">
                 Cadastro de Usuário
@@ -27,10 +27,10 @@
             <h:inputText value="#{cadastro.email}" />
 
             Senha:
-            <h:inputText value="#{cadastro.senha1}" />
+            <h:inputSecret id="password1" value="#{cadastro.senha1}" />
 
             Confirmação de senha:
-            <h:inputText value="#{cadastro.senha2}" />
+            <h:inputSecret id="password2" value="#{cadastro.senha2}" />
 
             Sexo:
             <h:selectOneRadio value="#{cadastro.sexo}">
@@ -49,9 +49,24 @@
                 <f:selectItems value="#{cadastro.listaLinguagens}" var="l" itemValue="#{l.id}" itemLabel="#{l.nome}"/>
             </h:selectManyCheckbox>
 
-            <h:commandButton value="Cadastrar" action="info" />
+            <h:commandButton value="Cadastrar" action="info" onclick="return verificarSenhas()" />
         </h:panelGrid>
     </h:form>
+
+    <script type="application/javascript">
+        function verificarSenhas() {
+            var senha = document.getElementById("form-cadastro:password1").value;
+            var senhaConfirmacao = document.getElementById("form-cadastro:password2").value;
+
+            if ( senha === senhaConfirmacao){
+                return true;
+            }
+
+            alert("Senhas não conferem");
+            return false;
+        }
+    </script>
+
 </body>
 
 </html>
