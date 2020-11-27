@@ -19,9 +19,10 @@
         <h2> <h:outputText value="#{indexBean.message}"/></h2>
 
         <h:form>
-            <h:commandButton value="Ir para outra página" action="page_two"/>
-            <h:commandButton value="Ir para página de navegação" action="page_bean"/>
-            <h:commandButton value="Ir para página de cadastro" action="cadastro"/>
+            <h:commandButton value="Ir para outra página" action="page_two" styleClass="btn_page"/>
+            <h:commandButton value="Ir para página de navegação" action="page_bean" styleClass="btn_page"/>
+            <h:commandButton value="Ir para página de cadastro" action="cadastro" styleClass="btn_page"/>
+            <h:commandButton value="Ir para página de formulário" action="form" styleClass="btn_page"/>
         </h:form>
 
         <h:form>

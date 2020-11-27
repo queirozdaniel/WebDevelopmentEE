@@ -12,4 +12,8 @@
         </navigation-case>
     </navigation-rule>
 
+    <application>
+        <message-bundle>messages</message-bundle>
+    </application>
+
 </faces-config>

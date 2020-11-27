@@ -8,8 +8,22 @@
     margin: 10px auto;
 }
 
-.font-nova{
-    font-family: Arial;
-    font-size: 1rem;
-    background-color: crimson;
+.text {
 }
+
+.btn_page {
+    margin: 10px;
+    border: none;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background: crimson;
+}
+
+.font-nova{
+    font-family: "Times New Roman";
+    font-size: 1rem;
+    background-color: aquamarine;
+}
+
