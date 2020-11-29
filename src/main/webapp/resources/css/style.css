@@ -8,9 +8,6 @@
     margin: 10px auto;
 }
 
-.text {
-}
-
 .btn_page {
     margin: 10px;
     border: none;
@@ -27,3 +24,71 @@
     background-color: aquamarine;
 }
 
+.tabela {
+    border: 1px solid aquamarine;
+}
+.cabecalho {
+    text-align: center;
+    font: 18px Arial, sans-serif;
+    font-weight: bold;
+    color: snow;
+    background: #008B45;
+}
+
+.colNumero {
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    background: #BCEE68;
+    padding: 3px;
+    width: 30px;
+}
+.colData {
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    background: #A2CD5A;
+    padding: 3px;
+    width: 100px;
+}
+
+.colDesc {
+    text-align: left;
+    font: 14px Arial, sans-serif;
+    background: #BCEE68;
+    padding: 3px;
+    width: 200px;
+}
+
+.colValor {
+    text-align: right;
+    font: 14px Arial, sans-serif;
+    background: #A2CD5A;
+    padding: 3px;
+    width: 100px;
+}
+
+
+.colOp {
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    background: #BCEE68;
+    padding: 3px;
+    width: 120px;
+}
+
+.smallInput {
+    width: 85px;
+}
+
+.bigInput {
+    width: 180px;
+}
+
+.formLabel {
+    font: 13px Arial, sans-serif;
+}
+
+.message {
+    font: 14px Arial, sans-serif;
+    font-weight: bold;
+    color: #cf1c1c;
+}

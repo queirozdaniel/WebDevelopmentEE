@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xml:lang="en" lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cadastro de despesas</title>
+</h:head>
+
+<h:body>
+
+    <h1>Cadaste sua despesa aqui</h1>
+
+    <h:form>
+        <h:dataTable value="#{table.despesas}" var="d" rendered="#{table.despesas.rowCount > 0}"
+                     styleClass="tabela"
+                     headerClass="cabecalho"
+                     columnClasses="colNumero,colData,colDesc,colValor,colOp">
+            <f:facet name="header">
+                Lista de despesas
+            </f:facet>
+
+            <h:column>
+                <f:facet name="header">#</f:facet>
+                #{table.despesas.rowIndex + 1}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Data</f:facet>
+                <h:outputText value="#{d.data}" rendered="#{!d.edit}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+
+                <h:inputText value="#{d.data}" rendered="#{d.edit}" styleClass="smallInput">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:inputText>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Descrição</f:facet>
+                <h:outputText value="#{d.descricao}" rendered="#{!d.edit}"/>
+                <h:inputText value="#{d.descricao}" rendered="#{d.edit}" styleClass="smallInput"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Valor</f:facet>
+                <h:outputText value="#{d.valor}" rendered="#{!d.edit}">
+                    <f:convertNumber type="currency" locale="pt_BR" />
+                </h:outputText>
+
+                <h:inputText value="#{d.valor}" rendered="#{d.edit}" styleClass="smallInput" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Operação</f:facet>
+
+                <h:panelGroup rendered="#{!d.edit}">
+                    <h:commandLink value="Alterar" action="#{table.editar(d)}" /> |
+                    <h:commandLink value="Excluir" action="#{table.excluir(d)}" />
+                </h:panelGroup>
+                <h:commandLink value="Gravar" action="#{table.gravar(d)}" rendered="#{d.edit}" />
+            </h:column>
+
+        </h:dataTable>
+
+        <h:panelGroup rendered="#{table.despesas.rowCount == 0}">
+            <h:outputText value="Não existem despesas cadastrads" styleClass="message" />
+            <br/><br/>
+        </h:panelGroup>
+
+        <h:commandButton value="Inserir" action="#{table.inserir}"/>
+    </h:form>
+
+
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:body>
+
+</html>
