@@ -6,7 +6,10 @@ import com.danielqueiroz.webdevelopmentee.model.Regiao;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ValueChangeEvent;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,15 +20,17 @@ public class RegioesBean implements Serializable {
 
     private Collection<Regiao> regioes;
     private Collection<Estado> estados;
+    private String cidade;
     private String siglaRegiao;
     private String siglaEstado;
 
-    @PostConstruct
+    @Inject
+    private FacesContext context;
+
+    /* @PostConstruct
     public void init() {
         regioes = RegiaoProvider.getRegioes();
-        System.out.println(RegiaoProvider.getRegioes().size());
-        RegiaoProvider.getRegioes().forEach(regiao -> System.out.println(regiao.getEstados().size()));
-    }
+    } */
 
     public Collection<Regiao> getRegioes() {
         return regioes;
@@ -37,7 +42,11 @@ public class RegioesBean implements Serializable {
 
     public void carregarEstados(ValueChangeEvent event) {
         this.estados = RegiaoProvider.getEstadosByRegiao(event.getNewValue().toString());
+        context.renderResponse();
+    }
 
+    public void carregarRegioes(ComponentSystemEvent event){
+        this.regioes =  RegiaoProvider.getRegioes();
     }
 
     public String getSiglaRegiao() {
@@ -54,5 +63,13 @@ public class RegioesBean implements Serializable {
 
     public void setSiglaEstado(String siglaEstado) {
         this.siglaEstado = siglaEstado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 }

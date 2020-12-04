@@ -12,11 +12,14 @@
     <title>Events - Regiões</title>
 </h:head>
 
+<f:event listener="#{regiao.carregarRegioes}" type="preRenderView" />
+
 <h:body>
     <h:form>
+        <h:messages />
         <h:panelGrid columns="2">
             Região:
-            <h:selectOneMenu value="#{regiao.siglaRegiao}" valueChangeListener="#{regiao.carregarEstados}" onchange="submit()">
+            <h:selectOneMenu value="#{regiao.siglaRegiao}" valueChangeListener="#{regiao.carregarEstados}" onchange="submit()" immediate="true">
                 <f:selectItem itemValue="-" itemLabel="-" noSelectionOption="true" />
                 <f:selectItems value="#{regiao.regioes}" var="r" itemValue="#{r.sigla}" itemLabel="#{r.nome}"  />
             </h:selectOneMenu>
@@ -26,6 +29,10 @@
                 <f:selectItem itemValue="-" itemLabel="-" noSelectionOption="true" />
                 <f:selectItems value="#{regiao.estados}" var="e" itemValue="#{e.sigla}" itemLabel="#{e.nome}" />
             </h:selectOneMenu>
+
+            Cidade:
+            <h:inputText value="#{regiao.cidade}"  required="true"/>
+
         </h:panelGrid>
     </h:form>
 </h:body>
