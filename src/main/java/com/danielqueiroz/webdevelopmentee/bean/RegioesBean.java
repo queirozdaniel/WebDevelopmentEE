@@ -5,14 +5,14 @@ import com.danielqueiroz.webdevelopmentee.model.Estado;
 import com.danielqueiroz.webdevelopmentee.model.Regiao;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ActionEvent;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collection;
 
 @Named("regiao")
-@SessionScoped
+@RequestScoped
 public class RegioesBean implements Serializable {
 
     private Collection<Regiao> regioes;
@@ -23,6 +23,8 @@ public class RegioesBean implements Serializable {
     @PostConstruct
     public void init() {
         regioes = RegiaoProvider.getRegioes();
+        System.out.println(RegiaoProvider.getRegioes().size());
+        RegiaoProvider.getRegioes().forEach(regiao -> System.out.println(regiao.getEstados().size()));
     }
 
     public Collection<Regiao> getRegioes() {
@@ -33,8 +35,9 @@ public class RegioesBean implements Serializable {
         return estados;
     }
 
-    public void carregarEstados(ActionEvent event) {
-        this.estados = RegiaoProvider.getEstadosByRegiao(siglaRegiao);
+    public void carregarEstados(ValueChangeEvent event) {
+        this.estados = RegiaoProvider.getEstadosByRegiao(event.getNewValue().toString());
+
     }
 
     public String getSiglaRegiao() {

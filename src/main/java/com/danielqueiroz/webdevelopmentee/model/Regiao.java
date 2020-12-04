@@ -1,15 +1,16 @@
 package com.danielqueiroz.webdevelopmentee.model;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Regiao implements Comparable<Regiao>{
+public class Regiao implements Comparable<Regiao>, Serializable {
 
     private String sigla;
     private String nome;
     private Set<Estado> estados = new TreeSet<>();
 
-    public Regiao(String sigla, String nome) {
+    public Regiao(String nome, String sigla) {
         this.sigla = sigla;
         this.nome = nome;
     }
@@ -41,5 +42,20 @@ public class Regiao implements Comparable<Regiao>{
     @Override
     public int compareTo(Regiao o) {
         return this.nome.compareTo(o.getNome());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Regiao regiao = (Regiao) o;
+
+        return sigla != null ? sigla.equals(regiao.sigla) : regiao.sigla == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return sigla != null ? sigla.hashCode() : 0;
     }
 }

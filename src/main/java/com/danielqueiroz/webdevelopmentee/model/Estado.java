@@ -1,6 +1,8 @@
 package com.danielqueiroz.webdevelopmentee.model;
 
-public class Estado implements Comparable<Estado>{
+import java.io.Serializable;
+
+public class Estado implements Comparable<Estado>, Serializable {
 
     private String sigla;
     private String nome;
@@ -38,6 +40,21 @@ public class Estado implements Comparable<Estado>{
 
     @Override
     public int compareTo(Estado o) {
-        return 0;
+        return this.sigla.compareTo(o.sigla);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Estado estado = (Estado) o;
+
+        return sigla != null ? sigla.equals(estado.sigla) : estado.sigla == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return sigla != null ? sigla.hashCode() : 0;
     }
 }

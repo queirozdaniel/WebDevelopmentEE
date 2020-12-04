@@ -14,13 +14,12 @@
 
 <h:body>
     <h:form>
-        <h:panelGrid columns="3">
+        <h:panelGrid columns="2">
             Região:
-            <h:selectOneMenu value="#{regiao.siglaRegiao}">
+            <h:selectOneMenu value="#{regiao.siglaRegiao}" valueChangeListener="#{regiao.carregarEstados}" onchange="submit()">
                 <f:selectItem itemValue="-" itemLabel="-" noSelectionOption="true" />
                 <f:selectItems value="#{regiao.regioes}" var="r" itemValue="#{r.sigla}" itemLabel="#{r.nome}"  />
             </h:selectOneMenu>
-            <h:commandButton value="Carregar Estados" actionListener="#{regiao.carregarEstados}" />
 
             Estado:
             <h:selectOneMenu value="#{regiao.siglaEstado}">
