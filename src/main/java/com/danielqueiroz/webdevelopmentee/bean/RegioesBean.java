@@ -27,10 +27,10 @@ public class RegioesBean implements Serializable {
     @Inject
     private FacesContext context;
 
-    /* @PostConstruct
+     @PostConstruct
     public void init() {
         regioes = RegiaoProvider.getRegioes();
-    } */
+    }
 
     public Collection<Regiao> getRegioes() {
         return regioes;
