@@ -5,7 +5,7 @@
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
 
     <navigation-rule>
-        <from-view-id>/page_two.xhtml</from-view-id>
+        <from-view-id>/estudos/page_two.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>to_index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
