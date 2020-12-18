@@ -1,4 +1,4 @@
-package com.danielqueiroz.webdevelopmentee.bean;
+package com.danielqueiroz.webdevelopmentee.bean.ejb;
 
 import com.danielqueiroz.webdevelopmentee.ejb.TemperatureConverterBean;
 import com.danielqueiroz.webdevelopmentee.ejb.TemperatureConverterBeanLocal;
