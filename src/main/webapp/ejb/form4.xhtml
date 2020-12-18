@@ -17,8 +17,11 @@
     <h1>Lista de Itens Async</h1>
     <h:form>
         <h:commandButton value="Executar" action="#{formAsync.executar}"/>
+        <h:commandButton value="Executar e Retornar" action="#{formAsync.executarERetornar}"/>
 
         <h3>#{formAsync.mensagem}</h3>
+
+        <h:commandButton value="Verificar Resultado" action="#{formAsync.verificar}"/>
     </h:form>
 
     <h:outputStylesheet library="css" name="style.css"/>
