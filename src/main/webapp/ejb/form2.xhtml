@@ -30,7 +30,7 @@
                         #{i}[
                             <h:commandLink value="remover">
                                 <f:ajax listener="#{formItem.remover}" render=":form:result :form:error"/>
-                                <f:param name="itemToRemove" value="#{i}" />
+                                <f:param name="itemToRemove" value="#{i}"  />
                             </h:commandLink>
                         ]</li>
                 </ui:repeat>
