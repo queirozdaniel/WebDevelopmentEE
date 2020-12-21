@@ -29,6 +29,11 @@ public class DBSetupBean {
         l2.setNumPaginas(390);
         em.persist(l2);
 
+        Livro l3 = new Livro();
+        l3.setId(3);
+        l3.setTitulo("Java Funcional");
+        l3.setNumPaginas(290);
+        em.persist(l3);
 
     }
 
