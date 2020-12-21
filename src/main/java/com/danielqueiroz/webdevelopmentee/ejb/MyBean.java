@@ -13,8 +13,11 @@ public class MyBean {
     @PersistenceContext
     private EntityManager em;
 
-    //@TransactionAttribute(TransactionAttributeType.REQUIRED)
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @EJB
+    private MyBean2 myBean2;
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+   //@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     //@TransactionAttribute(TransactionAttributeType.NEVER)
     //@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     //@TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -22,8 +25,9 @@ public class MyBean {
         Livro l1 = em.find(Livro.class, 1);
         l1.setNumPaginas(200);
 
-        Livro l2 = em.find(Livro.class, 2);
-        l2.setNumPaginas(180);
+        //Livro l2 = em.find(Livro.class, 2);
+        //l2.setNumPaginas(180);
+        myBean2.mB();
     }
 
 }
