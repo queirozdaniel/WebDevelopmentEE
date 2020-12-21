@@ -14,7 +14,7 @@ import java.util.List;
 @RequestScoped
 public class FormItemSingletonBean implements Serializable {
 
-    @EJB
+    //@EJB
     private ItensSingletonBean itensSingletonBean;
 
     public List<String> getItens(){

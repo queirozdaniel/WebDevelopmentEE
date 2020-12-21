@@ -6,8 +6,8 @@ import javax.ejb.Startup;
 import java.util.Arrays;
 import java.util.List;
 
-@Singleton
-@Startup // Inicia junto ao servidor
+// @Singleton
+// @Startup // Inicia junto ao servidor
 public class ItensSingletonBean {
 
     private List<String> itens;
