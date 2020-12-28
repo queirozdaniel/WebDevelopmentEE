@@ -31,20 +31,20 @@ public class FormTransactionEPBean implements Serializable {
         itens.add(item);
         itensBean.adicionarItem(item);
         item = new Item();
-        return "form7?face-redirect=true";
+        return "/ejb/form7?faces-redirect=true";
     }
 
     public String remover(){
         itens.remove(item);
         itensBean.removerItem(item.getId());
         item = new Item();
-        return "form7?face-redirect=true";
+        return "/ejb/form7?faces-redirect=true";
     }
 
     public String finalizar(){
         itensBean.finalizar();
         externalContext.invalidateSession(); // invalida a sessão para criar nova com EJB novo
-        return "form7?face-redirect=true";
+        return "/ejb/form7?faces-redirect=true";
     }
 
     public List<Item> getItens() {
