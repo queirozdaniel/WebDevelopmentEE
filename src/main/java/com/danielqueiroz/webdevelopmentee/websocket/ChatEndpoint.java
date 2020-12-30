@@ -16,8 +16,6 @@ public class ChatEndpoint {
     public void onOpen(Session session, EndpointConfig config) {
         System.out.println("Conexão aberta em CHAT");
         sessions.add(session);
-
-
     }
 
     @OnClose
@@ -39,6 +37,10 @@ public class ChatEndpoint {
     public void messageReceiver(Session session, String message) throws IOException {
         System.out.println("Conexão CHAT messageReceiver: "+ message);
 
+        if (message.trim().length() == 0) {
+            return;
+        }
+
         if (message.startsWith("!C!")){
             String name = message.substring(3);
             session.getUserProperties().put("name", name);
@@ -57,7 +59,5 @@ public class ChatEndpoint {
             session.getBasicRemote().sendText(message);
         }
     }
-
-
 
 }
