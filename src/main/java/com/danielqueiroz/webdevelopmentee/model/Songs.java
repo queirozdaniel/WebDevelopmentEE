@@ -1,19 +1,24 @@
 package com.danielqueiroz.webdevelopmentee.model;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 // Mock Datasource
 public class Songs {
 
-    private static final Map<Integer, Song> songs = Map.of(
-        1, new Song(1, "Let It be", "Beatles"),
-        2, new Song(2, "Hey Jude", "Beatles"),
-         3, new Song(3, "Crazy", "Aerosmith"),
-         4, new Song(4, "Angel", "Aerosmith"),
-         5, new Song(5, "Snurf", "Slipknot")
-    );
+    private static int CURRENT_ID = 0;
+
+    private static final Map<Integer, Song> songs = new LinkedHashMap<>();
+
+    static {
+        songs.put(++CURRENT_ID, new Song(CURRENT_ID, "Let It be", "Beatles"));
+        songs.put(++CURRENT_ID, new Song(CURRENT_ID, "Hey Jude", "Beatles"));
+        songs.put(++CURRENT_ID, new Song(CURRENT_ID, "Crazy", "Aerosmith"));
+        songs.put(++CURRENT_ID, new Song(CURRENT_ID, "Angel", "Aerosmith"));
+        songs.put(++CURRENT_ID, new Song(CURRENT_ID, "Snurf", "Slipknot"));
+    }
 
     public static List<Song> list(){
         return new ArrayList<Song>(songs.values());
@@ -22,4 +27,12 @@ public class Songs {
     public static Song findById(int id){
         return songs.get(id);
     }
+
+
+    public static int create(String name, String singer){
+        Song song = new Song(++CURRENT_ID, name, singer);
+        songs.put(CURRENT_ID, song);
+        return CURRENT_ID;
+    }
+
 }

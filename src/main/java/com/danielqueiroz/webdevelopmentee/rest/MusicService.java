@@ -4,7 +4,8 @@ import com.danielqueiroz.webdevelopmentee.model.Song;
 import com.danielqueiroz.webdevelopmentee.model.Songs;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.*;
+import java.net.URI;
 import java.util.List;
 
 @Path("/music")
@@ -40,7 +41,24 @@ public class MusicService {
     @Path("/find")
     @Produces(MediaType.APPLICATION_JSON)
     public Song findSongByIdQuery(@QueryParam("id") int id){
-        return Songs.findById(id);
+        Song song = Songs.findById(id);
+
+        if (song == null) return null;
+
+        return song;
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createSong(@FormParam("name") String name, @FormParam("singer") String singer, @Context UriInfo uriInfo){
+        int id = Songs.create(name, singer);
+
+        UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
+        uriBuilder.path(String.valueOf(id));
+
+        URI uri = uriBuilder.build();
+
+        return Response.created(uri).build();
     }
 
 }
