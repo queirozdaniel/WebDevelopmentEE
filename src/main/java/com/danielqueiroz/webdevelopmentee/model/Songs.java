@@ -28,11 +28,22 @@ public class Songs {
         return songs.get(id);
     }
 
-
     public static int create(String name, String singer){
         Song song = new Song(++CURRENT_ID, name, singer);
         songs.put(CURRENT_ID, song);
         return CURRENT_ID;
+    }
+
+    public static void delete(int id){
+        songs.remove(id);
+    }
+
+    public static void update(int id, String name, String singer){
+        Song song = findById(id);
+        if (song != null){
+            song.setName(name);
+            song.setSinger(singer);
+        }
     }
 
 }

@@ -11,20 +11,8 @@ import java.util.List;
 @Path("/music")
 public class MusicService {
 
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public String loadNames(){
-        StringBuilder sb = new StringBuilder("<html><body><h1>Nomes das Músicas</h1><ul>");
-
-        Songs.list().stream()
-                .forEach(song -> sb.append("<li>").append(song.getName()).append("</li>"));
-
-        sb.append("</ul></body></html>");
-        return sb.toString();
-    }
 
     @GET
-    @Path("/json")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> loadSongsAsJson(){
         return Songs.list();
@@ -61,4 +49,41 @@ public class MusicService {
         return Response.created(uri).build();
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(Song song, @Context UriInfo uriInfo){
+        int id = Songs.create(song.getName(), song.getSinger());
+
+        UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
+        uriBuilder.path(String.valueOf(id));
+
+        URI uri = uriBuilder.build();
+
+        return Response.created(uri).build();
+    }
+
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") int id){
+
+        if (findSongById(id) == null){
+            return Response.notModified().build();
+        }
+        Songs.delete(id);
+        return Response.ok().build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(Song song, @Context UriInfo uriInfo){
+
+        if (findSongById(song.getId()) == null){
+            return Response.notModified().build();
+        }
+
+        Songs.update(song.getId(), song.getName(), song.getSinger());
+        return Response.ok().build();
+    }
 }

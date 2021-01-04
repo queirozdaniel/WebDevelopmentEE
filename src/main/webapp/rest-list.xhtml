@@ -9,19 +9,23 @@
 
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Rest Client</title>
+    <title>Rest Client Músicas - List</title>
 </h:head>
 <h:body>
     <h:outputStylesheet library="css" name="style.css" />
-
     <div class="container">
-        <h1><h:outputText value="Cadastro de nova Música"/></h1>
+        <h:form>
+            <h1>Músicas Cadastradas</h1>
+            <h:commandButton value="Listar" action="#{formRestBean.list}" />
 
-        <form method="post" action="services/music">
-            Nome: <input type="text" name="name"/> <br/>
-            Cantor (Banda): <input type="text" name="singer"/> <br/>
-            <input type="submit" value="Cadastrar"/>
-        </form>
+            <h:panelGroup rendered="#{formRestBean.songs.size() > 0}">
+                <ul>
+                    <ui:repeat var="s" value="#{formRestBean.songs}">
+                        <li>#{s.id} => #{s.name} (#{s.singer})</li>
+                    </ui:repeat>
+                </ul>
+            </h:panelGroup>
+        </h:form>
     </div>
 </h:body>
 </html>
