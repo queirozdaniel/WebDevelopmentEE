@@ -14,4 +14,12 @@
         <param-value>/WEB-INF/tags.taglib.xml</param-value>
     </context-param>
 
+    <servlet>
+        <servlet-name>Init2</servlet-name>
+        <init-param>
+            <param-name>adminEmail</param-name>
+            <param-value>root@xyz.com</param-value>
+        </init-param>
+    </servlet>
+
 </web-app>
