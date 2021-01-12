@@ -21,5 +21,25 @@
             <param-value>root@xyz.com</param-value>
         </init-param>
     </servlet>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.xhtml</location>
+    </error-page>
+
+    <context-param>
+        <param-name>admEmail</param-name>
+        <param-value>root@abc.xyz</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
 
 </web-app>
