@@ -27,6 +27,11 @@
         <location>/404.xhtml</location>
     </error-page>
 
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.xhtml</location>
+    </error-page>
+
     <context-param>
         <param-name>admEmail</param-name>
         <param-value>root@abc.xyz</param-value>

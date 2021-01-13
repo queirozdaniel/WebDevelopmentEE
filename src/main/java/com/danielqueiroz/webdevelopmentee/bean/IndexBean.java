@@ -8,8 +8,18 @@ import java.io.Serializable;
 @RequestScoped
 public class IndexBean implements Serializable {
 
+    private int x;
+
     public String getMessage(){
         return "Mensagem Bean: Bem vindo ao desenvolvimento JavaEnterprise!";
     }
 
+    public String thowException(){
+        x = 10 / 0 ;
+        return null;
+    }
+
+    public int getX() {
+        return x;
+    }
 }
