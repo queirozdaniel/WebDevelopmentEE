@@ -17,6 +17,24 @@
     <div class="container">
         <h1>Ocorreu alguma exceção</h1>
 
+        <table width="50%" border="1">
+            <tr>
+                <td width="30%">Erro HTTP</td>
+                <td>#{errorHandler.statusCode}</td>
+            </tr>
+            <tr>
+                <td width="30%">Mensagem de erro</td>
+                <td>#{errorHandler.message}</td>
+            </tr>
+            <tr>
+                <td width="30%">Classe de Exceção</td>
+                <td>#{errorHandler.exceptionClassName}</td>
+            </tr>
+            <tr>
+                <td width="30%">Request URI</td>
+                <td>#{errorHandler.requestURI}</td>
+            </tr>
+        </table>
     </div>
 
 </h:body>
